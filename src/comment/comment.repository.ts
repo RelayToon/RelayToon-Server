@@ -24,4 +24,13 @@ export class CommentRepository extends Repository<Comment> {
       throw new BadRequestException('존재하지 않는 댓글입니다.');
     }
   }
+
+  async likeComment(commentId: number): Promise<void> {
+    const comment = await this.findOneBy({ id: commentId });
+    if (!comment) {
+      throw new BadRequestException('존재하지 않는 댓글입니다.');
+    }
+    comment.like += 1;
+    await this.save(comment);
+  }
 }

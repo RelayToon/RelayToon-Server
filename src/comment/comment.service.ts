@@ -21,4 +21,8 @@ export class CommentService {
   async deleteComment(commentId: number): Promise<void> {
     return this.commentRepository.deleteComment(commentId);
   }
+
+  async likeComment(commentId: number): Promise<void> {
+    return this.commentRepository.likeComment(commentId);
+  }
 }

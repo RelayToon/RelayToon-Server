@@ -10,10 +10,6 @@ import {
 } from 'typeorm';
 
 @Entity()
-@Check(
-  `("proposalId" IS NOT NULL AND "boardId" IS NULL) OR ("proposalId" IS NULL AND "boardId" IS NOT NULL)`,
-  // 👆 where절이 들어간듯?
-)
 export class Comment extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
