@@ -1,15 +1,14 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import * as config from 'config';
-
-const dbConfig = config.get('db');
+import * as dotenv from 'dotenv';
+dotenv.config({ path: '.env.dev' });
 
 export const typeORMConfig: TypeOrmModuleOptions = {
-  type: dbConfig.type,
-  host: process.env.RDS_HOSTNAME || dbConfig.host,
-  port: process.env.RDS_PORT || dbConfig.port,
-  username: process.env.RDS_USERNAME || dbConfig.username,
-  password: process.env.RDS_PASSWORD || dbConfig.password,
-  database: process.env.RDS_DB_NAME || dbConfig.database,
+  type: process.env.TYPEORM_TYPE as 'postgres',
+  host: process.env.TYPEORM_HOST,
+  port: +process.env.TYPEORM_PORT,
+  username: process.env.TYPEORM_USERNAME,
+  password: process.env.TYPEORM_PASSWORD,
+  database: process.env.TYPEORM_DATABASE,
   entities: [__dirname + '/../**/*.entity.{js,ts}'],
-  synchronize: dbConfig.synchronize,
+  synchronize: process.env.TYPEORM_SYNCHRONIZE === 'true',
 };
