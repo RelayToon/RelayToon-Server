@@ -23,7 +23,6 @@ export class Comment extends BaseEntity {
   @Column('text')
   content: string;
 
-  // 부모댓글 아이디
   @Column({ default: 0 })
   like: number;
 
@@ -34,7 +33,6 @@ export class Comment extends BaseEntity {
   @Column({ default: false })
   deleteYn: boolean;
 
-  // 추후 없앨 가능성 있음
   @ManyToOne(() => Round, (round) => round.comments, {
     onDelete: 'CASCADE',
   })
