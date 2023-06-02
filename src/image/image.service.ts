@@ -5,6 +5,10 @@ const path = require('path'); // import path from 'path';
 // eslint-disable-next-line
 const fs = require('fs/promises'); // import path from 'path';
 import { NFTStorage, File, Blob } from 'nft.storage';
+<<<<<<< HEAD
+=======
+import * as mime from 'mime-types';
+>>>>>>> c34cc19cfe7141f59a320cce66ea0675ce182bea
 
 @Injectable()
 export class ImageService {
