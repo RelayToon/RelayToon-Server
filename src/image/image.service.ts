@@ -5,17 +5,11 @@ const path = require('path'); // import path from 'path';
 // eslint-disable-next-line
 const fs = require('fs/promises'); // import path from 'path';
 import { NFTStorage, File, Blob } from 'nft.storage';
-<<<<<<< HEAD
-=======
-import * as mime from 'mime-types';
->>>>>>> c34cc19cfe7141f59a320cce66ea0675ce182bea
 
 @Injectable()
 export class ImageService {
   async uploadImage(file: Express.Multer.File): Promise<void> {
-    const NFT_STORAGE_TOKEN =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGU1RUQ2ZjQyZDYwQUExOGM1NDgxNzI0YkZGZUM0NmM5ZTM1OThGZjMiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY4NDQ2NzIxNzE0NCwibmFtZSI6InBhbmd5b2Vsb24ifQ.pV5R1O4NaG4UyPPTbyVIRP3HsDvUEaOuZW7cdsvDzPs';
-    const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
+    const client = new NFTStorage({ token: process.env.NFT_STORAGE_API_KEY });
 
     const data = await fs.readFile(
       path.join(process.cwd(), `./uploads/${file.filename}`),
